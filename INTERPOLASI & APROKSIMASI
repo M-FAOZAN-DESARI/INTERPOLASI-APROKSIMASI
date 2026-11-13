@@ -1,0 +1,40 @@
+import numpy as np
+from scipy.interpolate import lagrange
+
+print("="*60)
+print("IMPLEMENTASI INTERPOLASI: Polinomial Lagrange")
+print("="*60)
+
+#Input Data
+x = np.array([20.0, 50.0, 80.0], dtype=float)
+y = np.array([45.0, 80.0, 95.0], dtype=float)
+
+# Perhitungan Interpolasi
+poly_lagrange = lagrange(x, y)
+
+# Menghitung nilai y yang dicari
+x_target = 60.0
+y_pred = poly_lagrange(x_target)
+
+print(f"Nilai Data X (%): {x}")
+print(f"Nilai Data Y (Mbps): {y}")
+print(f"Estimasi nilai throughput pada saat x = {x_target} % adalah y = {y_pred:.5f} Mbps")
+
+
+
+
+# Input Data
+x = np.array([10.0, 20.0, 30.0, 40.0], dtype=float)
+y = np.array([82.0, 85.0, 88.0, 92.0], dtype=float)
+
+# Perhitungan Aproksimasi
+a, b = np.polyfit(x, y, 1)
+
+# Perhitungan Estimasi nilai y
+x_target = 25.0
+y_pred = a * x_target + b
+
+print(f"Nilai Data X (MB): {x}")
+print(f"Nilai Data Y (%): {y}")
+print(f"Persamaan Garis Aproksimasinya adalah y = {a:.2f}x + {b:.2f}")
+print(f"Estimasi nilai akurasi model (y) saat x = {x_target} MB adalah {y_pred:.2f}%")
